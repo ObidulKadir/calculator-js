@@ -11,41 +11,41 @@
 <body style="background-color: rgb(73, 73, 73);">
     
     <div class="container text-center">
-        <h1 class="text-light">Welcome to calculator world</h1>
+        <h1 class="text-light">Welcome to mini calculating world.</h1>
        <section>
             <div class="calculator-header">
-                <input type="text" class="form-control  mx-auto">
+                <input id="windowArea" type="text" class="form-control  mx-auto">
             </div>
             <div class="calculator-body">
-                <div class="button-groups p-2">
-                    <button>CE</button>
-                    <button>C</button>
-                    <button>X</button>
-                    <button>/</button>
+                <div class="button-groups p-2 ">
+                    <button onclick="document.getElementById('windowArea').value=` `">CE</button>
+                    <button onclick="backspace()">C</button>
+                    <button onclick="document.getElementById('windowArea').value=` `"">X</button>
+                    <button onclick="insert(`/`)">/</button>
                 </div>
                 <div class="button-groups p-2">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>*</button>
+                    <button onclick="insert(7)">7</button>
+                    <button onclick="insert(8)">8</button>
+                    <button onclick="insert(9)">9</button>
+                    <button onclick="insert(`*`)">*</button>
                 </div>
                 <div class="button-groups p-2">
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>-</button>
+                    <button onclick="insert(4)">4</button>
+                    <button onclick="insert(5)">5</button>
+                    <button onclick="insert(6)">6</button>
+                    <button onclick="insert(`-`)">-</button>
                 </div>
                 <div class="button-groups p-2">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>+</button>
+                    <button onclick="insert(1)">1</button>
+                    <button onclick="insert(2)">2</button>
+                    <button onclick="insert(3)">3</button>
+                    <button onclick="insert(`+`)">+</button>
                 </div>
                 <div class="button-groups p-1 m-1">
-                    <button class="dot-button">.</button>
-                    <button class="zero-button">0</button>
+                    <button onclick="insert(`.`)" class="dot-button">.</button>
+                    <button class="zero-button" onclick="insert(0)">0</button>
                     
-                    <button class="equal-button align-self-center">=</button>
+                    <button onclick="equal()" class="equal-button">=</button>
                 </div>
 
 
@@ -54,6 +54,23 @@
        </section>
     </div>
 
+    <script>
+       
+        function insert(num){
+            
+            document.getElementById('windowArea').value = document.getElementById('windowArea').value + num;
+            
+        }
+        function equal(){
+            const inputValue = document.getElementById('windowArea').value;
+            document.getElementById('windowArea').value = eval(inputValue);
+        }
+        function backspace(){
+            const removeLastValue = document.getElementById('windowArea').value;
+            document.getElementById('windowArea').value = removeLastValue.slice(0, removeLastValue.length - 1)
+        }
+        
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
